@@ -26,8 +26,8 @@ Tener en cuenta los siguientes requerimientos para realizar la funcionalidad de 
 El prototipo dado esta diseñado en mobile, a pesar de no tener la versión desktop debe ser responsive. Ej: en pantallas desktop el grid de productos puede cambiar a 4 columnas.
 
 ### Recursos
-* En la carpeta ```img``` encuentra las imagenes de los productos.
-* En la carpeta ```svg``` encuentra las iconos. 
+* En la carpeta ```img``` dentro del folder ```public``` encuentra las imagenes de los productos.
+* En la carpeta ```svg``` dentro del folder ```public``` encuentra las iconos.
 
 ### Bonus
 Al realizar uno o todos los puntos siguientes son puntos extras al calificar el resultado de la prueba:
