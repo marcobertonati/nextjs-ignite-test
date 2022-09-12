@@ -2,7 +2,7 @@
 Prueba técnica que se realiza a los candidatos al cargo de Frontend Developer.
 
 ### Objetivo
-Realizar la maquetación (React) y realizar la funcionalidad de filtros en del siguiente prototipo
+Realizar la maquetación (React) y realizar la funcionalidad de filtros del siguiente prototipo
 
 [Ver prototipo](https://www.figma.com/proto/iAtVRRkGIwqbbz2LGApCtY/Frontend-Test?node-id=73%3A303&viewport=-555%2C2051%2C1.1058835983276367&scaling=scale-down "Prototipo")
 
