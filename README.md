@@ -1,34 +1,35 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Prueba técnica frontend
+Prueba técnica que se realiza a los candidatos al cargo de Frontend Developer.
 
-## Getting Started
+### Objetivo
+Realizar la maquetación (React) y realizar la funcionalidad de filtros en del siguiente prototipo
 
-First, run the development server:
+[Ver prototipo](https://www.figma.com/proto/iAtVRRkGIwqbbz2LGApCtY/Frontend-Test?node-id=73%3A303&viewport=-555%2C2051%2C1.1058835983276367&scaling=scale-down "Prototipo")
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+[Ver archivo de diseño](https://www.figma.com/file/iAtVRRkGIwqbbz2LGApCtY/Frontend-Test?node-id=0%3A1 "Archivo de diseño")
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Funcionamiento de filtros
+Tener en cuenta los siguientes requerimientos para realizar la funcionalidad de los filtros:
+* Al hacer clic en el botón de filtrar se despliega un modal con las opciones para filtrar
+* Se pueden seleccionar varias opciones
+* Al seleccionar una se activa el botón de limpiar y se muestra el número de opciones seleccionadas en el botón de filtrar
+* Al hace clic en el botón de filtrar se cierra el modal y se muestran los productos que cumplen con los filtros seleccionados
+* Al hacer clic en el botón de limpiar quita las opciones seleccionados del formulario de filtros y carga el listado con todas las opciones
+* Son tres opciones de filtro: ```Rubia (id=1)```, ```Morena (id=2)``` y ```Roja (id=3)```
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+### Requisitos técnicos
+* Usar sass para crear los estilos.
+* El Js debe ser escrito en ES6.
+* Para la construcción del listado de los productos usar el archivo ```products.json``` que esta en este repositorio.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+### Responsive
+El prototipo dado esta diseñado en mobile, a pesar de no tener la versión desktop debe ser responsive. Ej: en pantallas desktop el grid de productos puede cambiar a 4 columnas.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### Recursos
+* En la carpeta ```img``` dentro del folder ```public``` encuentra las imagenes de los productos.
+* En la carpeta ```svg``` dentro del folder ```public``` encuentra las iconos.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Bonus
+Al realizar uno o todos los puntos siguientes son puntos extras al calificar el resultado de la prueba:
+* Si se recarga la página y se tenian filtros aplicados, estos se deben de conservar.
+* El reporte en lighthouse no debe ser menor a 90 en Performance, Accesibilidad, Best Practices y CEO.
