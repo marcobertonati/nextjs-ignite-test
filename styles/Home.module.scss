@@ -46,8 +46,19 @@ $color-lines: #f4f4f4;
   padding: 1rem;
   display: flex;
   justify-content: space-between;
+
+  .container__icon-navbar{
+
+    .icon-navbar__cart{
+
+    }
+
+
+  }
 }
 
+
+/*Fixed Modal*/
 .fixedButton {
   position: sticky;
   bottom: 0;

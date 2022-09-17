@@ -8,7 +8,6 @@ import ModalContainer from "../containers/ModalContainer";
 import GridProducts from "../components/GridProducts";
 import NextCategory from "../components/NextCategory";
 import Contact from "../components/Contact";
-import Footer from "../components/Footer";
 
 /* Module */
 import { useState, useEffect } from "react";
@@ -16,33 +15,28 @@ import { useState, useEffect } from "react";
 /* Fetch & Data */
 import { getTypesOfBeers, getAllBeers } from "../services/beerService";
 
-export default function Home({
-  beerList = "No beers founded",
-  typeOfBeers = "No type beers founded",
-}) {
+export default function Home({ beerList = [], typeOfBeers = [] }) {
   const [beers, setBeers] = useState(beerList);
   const [stateModal, setStateModal] = useState(false);
   const [quantityOfTypesSelected, setQuantityOfTypesSelected] = useState(0);
 
   useEffect(() => {
-    const hasFilteredBeer = JSON.parse(localStorage.getItem("type-filtered"));
-    const filteredBeers = [];
-    if (hasFilteredBeer.length !== 0) {
-      hasFilteredBeer.forEach((type) => {
-        beers.forEach((beer) => {
-          if (beer.filterId === Number(type)) {
-            filteredBeers.push(beer);
-          }
-        });
-      });
-      setBeers(filteredBeers);
+    const filtersOnLocalStorage = JSON.parse(
+      localStorage.getItem("type-filtered")
+    );
+
+    if (filtersOnLocalStorage.length > 0) {
+      const getBeersFiltered = beers.filter((beer) =>
+        filtersOnLocalStorage.includes(String(beer.filterId))
+      );
+      setBeers(getBeersFiltered);
     }
   }, []);
-
+  
   return (
     <>
       <PageLayout title="Home - Ignite Drink Store">
-        {beerList ? (
+        {beerList.length > 0 ? (
           <GridProducts beers={beers} />
         ) : (
           <span>NO SE ENCONTRARON CERVEZAS.</span>

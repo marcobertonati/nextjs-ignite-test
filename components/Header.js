@@ -36,7 +36,7 @@ export default function Header() {
                 style={{ filter: "invert(100%)" }}
               />
               <Image
-                className="icon-navbar"
+                className="icon-navbar icon-navbar__cart"
                 alt="cart"
                 width="32px"
                 height="32px"
