@@ -8,9 +8,10 @@ import ModalContainer from "../containers/ModalContainer";
 import GridProducts from "../components/GridProducts";
 import NextCategory from "../components/NextCategory";
 import Contact from "../components/Contact";
+import Footer from "../components/Footer";
 
 /* Module */
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 /* Fetch & Data */
 import { getTypesOfBeers, getAllBeers } from "../services/beerService";
@@ -20,12 +21,37 @@ export default function Home({
   typeOfBeers = "No type beers founded",
 }) {
   const [beers, setBeers] = useState(beerList);
-  const [stateModal, setStateModal] = useState(true);
-  const [quantityOfTypesSelected, setQuantityOfTypesSelected] = useState(null);
+  const [stateModal, setStateModal] = useState(false);
+  const [quantityOfTypesSelected, setQuantityOfTypesSelected] = useState(0);
+
+  useEffect(() => {
+    const hasFilteredBeer = JSON.parse(localStorage.getItem("type-filtered"));
+    const filteredBeers = [];
+    if (hasFilteredBeer.length !== 0) {
+      hasFilteredBeer.forEach((type) => {
+        beers.forEach((beer) => {
+          if (beer.filterId === Number(type)) {
+            filteredBeers.push(beer);
+          }
+        });
+      });
+      setBeers(filteredBeers);
+    }
+  }, []);
 
   return (
     <>
-      <PageLayout
+      <PageLayout title="Home - Ignite Drink Store">
+        {beerList ? (
+          <GridProducts beers={beers} />
+        ) : (
+          <span>NO SE ENCONTRARON CERVEZAS.</span>
+        )}
+
+        <NextCategory />
+        <Contact />
+      </PageLayout>
+      <ModalContainer
         beerList={beerList}
         typeOfBeers={typeOfBeers}
         setBeers={setBeers}
@@ -33,26 +59,7 @@ export default function Home({
         setStateModal={setStateModal}
         quantityOfTypesSelected={quantityOfTypesSelected}
         setQuantityOfTypesSelected={setQuantityOfTypesSelected}
-        title="Home - Ignite Drink Store"
-      >
-        {beerList ? (
-          <GridProducts beers={beers} />
-        ) : (
-          <span>NO SE ENCONTRARON CERVEZAS.</span>
-        )}
-
-        {/* <ModalContainer
-          beerList={beerList}
-          typeOfBeers={typeOfBeers}
-          setBeers={setBeers}
-          stateModal={stateModal}
-          setStateModal={setStateModal}
-          quantityOfTypesSelected={quantityOfTypesSelected}
-          setQuantityOfTypesSelected={setQuantityOfTypesSelected}
-        /> */}
-        <NextCategory />
-        <Contact />
-      </PageLayout>
+      />
     </>
   );
 }

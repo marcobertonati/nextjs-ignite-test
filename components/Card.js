@@ -7,10 +7,17 @@ export default function Card({ product }) {
       key={product.name}
       className={styles.container && styles.singleCard}
     >
-        <h3>{product.name}</h3>
-        <p>{product.description}</p>
-        <h4>${product.price}</h4>
-        <button>AGREGAR</button>
+      <Image
+        src={`/img/${product.img}`}
+        alt={product.name}
+        width={"100%"}
+        height={"100%"}
+        layout={"responsive"}
+      />
+      <h3>{product.name}</h3>
+      <p>{product.description}</p>
+      <h4>${product.price}</h4>
+      <button>AGREGAR</button>
     </article>
   );
 }

@@ -1,7 +1,5 @@
-import styles from "../styles/Home.module.scss";
-import Image from "next/image";
-
 import Card from "./Card";
+import styles from "../styles/Home.module.scss";
 
 export default function GridProducts({ beers }) {
   return (
@@ -10,12 +8,7 @@ export default function GridProducts({ beers }) {
         <h2>Cervezas</h2>
         <div className={styles.containerCard}>
           {beers.map((product, index) => {
-            return (
-              <Card
-                key={index}
-                product={product}
-              />
-            );
+            return <Card key={index} product={product} />;
           })}
         </div>
       </section>

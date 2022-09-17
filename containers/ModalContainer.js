@@ -1,18 +1,22 @@
+/*Componentes */
 import ModalFilter from "../components/ModalFilter";
-import { useState } from "react";
+import ButtonFilter from "../components/ButtonFilter";
 
-export default function ModalContainer(
+/*Modules */
+import { useState, useEffect } from "react";
+
+export default function ModalContainer({
   beerList,
   typeOfBeers,
   setBeers,
   stateModal,
   setStateModal,
   quantityOfTypesSelected,
-  setQuantityOfTypesSelected
-) {
+  setQuantityOfTypesSelected,
+}) {
   const [stateCleanButton, setstateCleanButton] = useState(false);
 
-  const onHandleFilter = () => {
+  const onHandleFilter = (event) => {
     const nodeList = document.querySelectorAll("input");
     const nodeListToArray = Array.apply(null, nodeList);
     const inputThatWasSelected = [];
@@ -24,8 +28,12 @@ export default function ModalContainer(
 
     if (inputThatWasSelected.length !== 0) {
       const beerSelected = [];
+      localStorage.setItem(
+        "type-filtered",
+        JSON.stringify(inputThatWasSelected)
+      );
       inputThatWasSelected.forEach((inputType) => {
-        typeOfBeer.forEach((types) => {
+        typeOfBeers.forEach((types) => {
           if (inputType == types.filterId) {
             beerSelected.push(...types.beers);
           }
@@ -34,23 +42,26 @@ export default function ModalContainer(
       setBeers(beerSelected);
       setStateModal(!stateModal);
     } else {
-      setQuantityOfTypesSelected(null);
+      setQuantityOfTypesSelected(0);
       setBeers(beerList);
       setStateModal(!stateModal);
+      localStorage.setItem("type-filtered", JSON.stringify([]));
     }
   };
 
-  const onHandleCleanFilter = () => {
-    const nodeList = document.querySelectorAll("input");
-    const nodeListToArray = Array.apply(null, nodeList);
-    nodeListToArray.forEach((input) => (input.checked = false));
+  const onHandleCleanFilter = (event) => {
     setBeers(beerList);
     setStateModal(!stateModal);
-    setQuantityOfTypesSelected(null);
+    setQuantityOfTypesSelected(0);
+    localStorage.setItem("type-filtered", JSON.stringify([]));
+  };
+
+  const onHandleCloseModal = (event) => {
+    setStateModal(false);
   };
 
   /*Check if an input was selected to set the state of the botton clean */
-  const onHandleChangeForm = () => {
+  const onHandleChangeForm = (event) => {
     const nodeList = document.querySelectorAll("input");
     const nodeListToArray = Array.apply(null, nodeList);
     const inputThatWasSelected = [];
@@ -59,9 +70,8 @@ export default function ModalContainer(
         inputThatWasSelected.push(inputSelected.value);
       }
     });
-
     if (inputThatWasSelected.length === 0) {
-      setQuantityOfTypesSelected(null);
+      setQuantityOfTypesSelected(0);
       setstateCleanButton(false);
     } else {
       setQuantityOfTypesSelected(inputThatWasSelected.length);
@@ -69,5 +79,45 @@ export default function ModalContainer(
     }
   };
 
-  return <ModalFilter />;
+  const onHandleHasChecked = (id) => {
+    const typeFilteredOnLocalStorage = JSON.parse(
+      localStorage.getItem("type-filtered")
+    );
+    const founded = typeFilteredOnLocalStorage.some(
+      (typeFiltered) => typeFiltered == id
+    );
+    return founded;
+  };
+
+  useEffect(() => {
+    const filteredOnLocalStorage = localStorage.getItem("type-filtered");
+
+    if (filteredOnLocalStorage === null) {
+      localStorage.setItem("type-filtered", JSON.stringify([]));
+    } else {
+      setQuantityOfTypesSelected(JSON.parse(filteredOnLocalStorage).length);
+    }
+  }, []);
+
+  return (
+    <>
+      {stateModal ? (
+        <ModalFilter
+          onHandleCleanFilter={onHandleCleanFilter}
+          onHandleChangeForm={onHandleChangeForm}
+          onHandleCloseModal={onHandleCloseModal}
+          onHandleFilter={onHandleFilter}
+          onHandleHasChecked={onHandleHasChecked}
+          quantityOfTypesSelected={quantityOfTypesSelected}
+          typeOfBeers={typeOfBeers}
+        />
+      ) : (
+        <ButtonFilter
+          setStateModal={setStateModal}
+          stateModal={stateModal}
+          quantityOfTypesSelected={quantityOfTypesSelected}
+        />
+      )}
+    </>
+  );
 }

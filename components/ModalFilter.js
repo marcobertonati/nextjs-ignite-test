@@ -1,95 +1,32 @@
 import styles from "../styles/Home.module.scss";
-
 import Image from "next/image";
 
-import { useState } from "react";
-
 export default function ModalFilter({
-  typeOfBeer,
-  beerList,
-  setBeers,
-  setStateModal,
-  stateModal,
+  typeOfBeers,
   quantityOfTypesSelected,
-  setQuantityOfTypesSelected,
+  onHandleCleanFilter,
+  onHandleCloseModal,
+  onHandleChangeForm,
+  onHandleFilter,
+  onHandleHasChecked,
 }) {
-  // const [quantityOfTypesSelected, setQuantityOfTypesSelected] = useState(null);
-  
-  const [stateCleanButton, setstateCleanButton] = useState(false);
-
-  const onHandleFilter = () => {
-    const nodeList = document.querySelectorAll("input");
-    const nodeListToArray = Array.apply(null, nodeList);
-    const inputThatWasSelected = [];
-    nodeListToArray.forEach((inputSelected) => {
-      if (inputSelected.checked) {
-        inputThatWasSelected.push(inputSelected.value);
-      }
-    });
-
-    if (inputThatWasSelected.length !== 0) {
-      const beerSelected = [];
-      inputThatWasSelected.forEach((inputType) => {
-        typeOfBeer.forEach((types) => {
-          if (inputType == types.filterId) {
-            beerSelected.push(...types.beers);
-          }
-        });
-      });
-      setBeers(beerSelected);
-      setStateModal(!stateModal);
-    } else {
-      setQuantityOfTypesSelected(null);
-      setBeers(beerList);
-      setStateModal(!stateModal);
-    }
-  };
-
-  const onHandleCleanFilter = () => {
-    const nodeList = document.querySelectorAll("input");
-    const nodeListToArray = Array.apply(null, nodeList);
-    nodeListToArray.forEach((input) => (input.checked = false));
-    setBeers(beerList);
-    setStateModal(!stateModal);
-    setQuantityOfTypesSelected(null);
-  };
-
-  /*Check if an input was selected to set the state of the botton clean */
-  const onHandleChangeForm = () => {
-    const nodeList = document.querySelectorAll("input");
-    const nodeListToArray = Array.apply(null, nodeList);
-    const inputThatWasSelected = [];
-    nodeListToArray.forEach((inputSelected) => {
-      if (inputSelected.checked) {
-        inputThatWasSelected.push(inputSelected.value);
-      }
-    });
-
-    if (inputThatWasSelected.length === 0) {
-      setQuantityOfTypesSelected(null);
-      setstateCleanButton(false);
-    } else {
-      setQuantityOfTypesSelected(inputThatWasSelected.length);
-      setstateCleanButton(true);
-    }
-  };
-
   return (
     <div className={styles.overlayModal}>
       <div className={styles.containerModal}>
         <h5>Filtros</h5>
-        <button onClick={onHandleCleanFilter} className={styles.closeModal}>
-          <Image alt="menu" width="24px" height="24px" src="/svg/close.svg" />
+        <button onClick={onHandleCloseModal} className={styles.closeModal}>
+          <Image alt="close" width="24px" height="24px" src="/svg/close.svg" />
         </button>
 
         <form className={styles.formContainer} onChange={onHandleChangeForm}>
-          {typeOfBeer.map((oneType) => {
+          {typeOfBeers.map((oneType) => {
             return (
               <label key={oneType.filterId}>
                 <input
                   type="checkbox"
                   id={oneType.filterId}
                   value={oneType.filterId}
+                  defaultChecked={onHandleHasChecked(oneType.filterId)}
                 />{" "}
                 {oneType.type.toUpperCase()}
               </label>
@@ -99,7 +36,7 @@ export default function ModalFilter({
             <button
               className={styles.buttonClean}
               onClick={onHandleCleanFilter}
-              disabled={!stateCleanButton}
+              disabled={quantityOfTypesSelected === 0}
             >
               LIMPIAR{" "}
             </button>
