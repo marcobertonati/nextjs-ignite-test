@@ -1,0 +1,338 @@
+$color-primary: #ffffff;
+$color-secondary: #0f0f0f;
+$color-complement: #979797;
+$color-button: #0000a3;
+$color-lines: #f4f4f4;
+
+/* Shared styles */
+.container {
+  width: 100%;
+  padding: 0 1rem;
+  margin: 0;
+  background: $color-primary;
+}
+
+.fixedNavbar {
+  position: sticky;
+  top: 0;
+  background-color: $color-secondary;
+}
+
+.header {
+  $color-secondary: #0f0f0f;
+
+  a {
+    padding: 2rem;
+  }
+
+  h1 {
+    color: $color-complement;
+    padding: 2rem;
+  }
+
+  p {
+    background-color: $color-secondary;
+    padding: 2rem;
+
+    span {
+      background-color: $color-complement;
+      padding: 2rem;
+    }
+  }
+}
+
+.navbar {
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.fixedButton {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 1rem;
+
+  button {
+    color: $color-primary;
+    background-color: $color-button;
+    padding: 0.5rem 3rem;
+    border: none;
+    border-radius: 5px;
+  }
+}
+
+.overlayModal {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+
+  display: flex;
+  align-items: center;
+}
+
+.containerModal {
+  width: 100%;
+  position: relative;
+  bottom: -330px;
+  display: flex;
+  flex-direction: column;
+
+  background-color: $color-complement;
+  color: $color-secondary;
+  background-color: $color-primary;
+
+  .closeModal {
+    position: absolute;
+    right: 0;
+    padding: 0.25rem;
+    margin: 0.5rem;
+    border: 1px $color-lines solid;
+    background-color: $color-primary;
+    top: -25px;
+    border-radius: 5px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  h5 {
+    padding: 1rem 1rem;
+    font-size: 2rem;
+    color: $color-secondary;
+
+    margin: 0;
+    text-align: left;
+  }
+
+  .formContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 0rem 1rem;
+
+    label {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      flex-direction: row-reverse;
+      font-size: 1rem;
+      padding-bottom: 0.5rem;
+      margin-bottom: 0.25rem;
+      border-bottom: 1px $color-lines solid;
+
+      input[type="checkbox"] {
+        background: radial-gradient(
+          circle at center,
+          #1062a4 0.6ex,
+          white 0.7ex
+        );
+      }
+
+      input[type="checkbox"]:checked {
+        background: radial-gradient(
+          circle at center,
+          #1062a4 0.6ex,
+          white 0.7ex
+        );
+      }
+    }
+
+    .buttonContainer {
+      padding: 1rem 0rem 1rem 0rem;
+      display: flex;
+      justify-content: space-evenly;
+
+      button {
+        width: 100%;
+        padding: 0.5rem;
+        margin: 0 0.25rem 0 0.25rem;
+        border-radius: 10px;
+        background-color: $color-button;
+
+        &:disabled {
+          background-color: $color-lines;
+        }
+
+        &:enabled {
+          color: $color-primary;
+        }
+      }
+
+      .buttonClean {
+        color: $color-complement;
+      }
+      .buttonFilter {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      span {
+        background-color: $color-primary;
+        color: $color-button;
+        padding: 0.25rem 0.75rem;
+        border-radius: 10px;
+      }
+    }
+  }
+}
+
+/* Home styles */
+
+// TABLE PRODUCTS
+
+.container__tableProduct {
+  background-color: $color-primary;
+  color: $color-secondary;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1rem;
+
+  h2 {
+    text-align: center;
+  }
+
+  .containerCard {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem 1rem;
+  }
+}
+
+.singleCard {
+  border: $color-lines 2px solid;
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  h3,
+  p,
+  h4 {
+    padding: 0 0.5rem;
+  }
+
+  button {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 0 0 10px 10px;
+    background-color: $color-lines;
+    color: $color-button;
+    font-weight: 600;
+    border: 0px;
+  }
+}
+
+// NEXT CATEGORY
+.nextCategoryContainer {
+  display: flex;
+  justify-content: space-between;
+  background-color: $color-primary;
+  color: $color-secondary;
+  padding: 2rem;
+  border: 1px $color-lines solid;
+  border-radius: 10px;
+
+  p {
+    margin: 0;
+  }
+
+  h6 {
+    margin: 0;
+    font-size: 2rem;
+  }
+
+  .nextCategoryArrow {
+    display: flex;
+  }
+}
+
+// CONTACT
+.contact {
+  display: flex;
+  flex-direction: column;
+  background-color: $color-secondary;
+  color: $color-primary;
+  padding-top: 1rem;
+
+  p {
+    margin: 0;
+    font-weight: 600;
+    font-size: 14px;
+    text-align: center;
+    color: $color-primary;
+    padding-top: 1rem;
+  }
+
+  .containerIconContact {
+    display: flex;
+    justify-content: center;
+    padding: 2rem 0;
+
+    .iconContact {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      margin: 0 0.5rem 0 0.5rem;
+      width: 5rem;
+      height: 5rem;
+      border-radius: 50px;
+      background-color: $color-primary;
+    }
+  }
+}
+
+// FOOTER
+.footerContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: $color-primary;
+  color: $color-secondary;
+  padding-top: 1rem;
+
+  nav ul {
+    padding: 0;
+    list-style: none;
+    text-align: center;
+    font-weight: 700;
+    color: $color-secondary;
+
+    li {
+      padding: 0.75rem 0;
+    }
+  }
+
+  div {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    padding: 2rem 0;
+
+    &::after {
+      content: " ";
+      position: absolute;
+      height: 1px;
+      width: 60px;
+      background-color: $color-complement;
+      top: -10px;
+    }
+
+    span {
+      padding: 0.5rem;
+      border-radius: 100%;
+      background-color: $color-button;
+    }
+  }
+
+  p {
+    color: $color-secondary;
+    text-align: center;
+    font-weight: 700;
+  }
+}
