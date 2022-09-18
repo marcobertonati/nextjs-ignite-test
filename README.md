@@ -18,7 +18,7 @@ git clone https://github.com/marcobertonati/nextjs-ignite-test.git
 ### Components
 Los components son los encargados de renderizar el contenido visual. Reciben props y retornan un elemento.
 
-### Conteiners
+### Containers
 Los conteiners son los encargados de manejar los servicios, información y lógica de la aplicación. Envian props a sus hijos y establecen el estado de los componentes. 
 
 ### Pages
