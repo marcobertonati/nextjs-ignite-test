@@ -51,6 +51,8 @@ http://localhost:3000/api/products/typeBeers
 * Al seleccionar una se activa el botón de limpiar y se muestra el número de opciones seleccionadas en el botón de filtrar
 * Al hace clic en el botón de filtrar se cierra el modal y se muestran los productos que cumplen con los filtros seleccionados
 * Al hacer clic en el botón de limpiar quita las opciones seleccionados del formulario de filtros y carga el listado con todas las opciones
+* Si se recarga la página y se tenian filtros aplicados, estos se deben de conservar por el uso del Localstorage
+
 
 ## 🤓 About author
 I'm [Marco Bertonati](https://www.linkedin.com/in/marcobertonati/) from Mendoza (Argentina). Since I was a kid (07/11/1989) I've been interested in technology, comunication & design. I got a bachelor degree in Social Comunication (Universidad Nacional de Cuyo) and currently I'm expanding my knowledge to web development.
