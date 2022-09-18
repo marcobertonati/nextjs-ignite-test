@@ -32,7 +32,7 @@ export default function Home({ beerList = [], typeOfBeers = [] }) {
       setBeers(getBeersFiltered);
     }
   }, []);
-  
+
   return (
     <>
       <PageLayout title="Home - Ignite Drink Store">

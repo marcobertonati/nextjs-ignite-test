@@ -1,13 +1,14 @@
 import Head from "next/head";
 import Header from "./Header";
 import Footer from "./Footer";
+import styles from "../styles/Home.module.scss";
 
 export default function PageLayout({
   children,
   title = "Default - Ignite Drink Store",
 }) {
   return (
-    <>
+    <div className={styles.pageContainer} >
       <Head>
         <title>{title}</title>
         <meta
@@ -19,6 +20,6 @@ export default function PageLayout({
       <Header />
       <main>{children}</main>
       <Footer />
-    </>
+    </div>
   );
 }

@@ -18,6 +18,7 @@ export default function ModalContainer({
 
   /* Handle that filter by the type of beers selected by the user */
   const onHandleFilter = (event) => {
+    /* Get the inptud selected */
     const nodeList = document.querySelectorAll("input");
     const nodeListToArray = Array.apply(null, nodeList);
     const inputThatWasSelected = [];
@@ -27,7 +28,8 @@ export default function ModalContainer({
       }
     });
 
-    if (inputThatWasSelected.length !== 0) {
+    /* If the array of input is > 0, then we gonna filter */
+    if (inputThatWasSelected.length > 0) {
       localStorage.setItem(
         "type-filtered",
         JSON.stringify(inputThatWasSelected)
@@ -37,11 +39,14 @@ export default function ModalContainer({
       );
       setBeers(typeOfBeersSelectedByUser);
       setStateModal(!stateModal);
+      window.scrollTo(0, 0);
     } else {
+      /* If not, we set all the beers */
       localStorage.setItem("type-filtered", JSON.stringify([]));
       setQuantityOfTypesSelected(0);
       setBeers(beerList);
       setStateModal(!stateModal);
+      window.scrollTo(0, 0);
     }
   };
 

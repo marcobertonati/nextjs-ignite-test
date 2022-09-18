@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function NextCategory() {
   return (
-    <div className={styles.container}>
+    <div className={styles.container && styles.contactContainer}>
       <section className={styles.contact}>
         <div>
           <p>¿Podemos ayudarle?</p>

@@ -1,35 +1,64 @@
-# Prueba técnica frontend
-Prueba técnica que se realiza a los candidatos al cargo de Frontend Developer.
+# E-COMMERCE 🍺 Proyecto en NextJS
 
-### Objetivo
-Realizar la maquetación (React) y realizar la funcionalidad de filtros del siguiente prototipo
+## Tecnologías utilizadas 💡
+* NextJs
+* Sass
+* Git
 
-[Ver prototipo](https://www.figma.com/proto/iAtVRRkGIwqbbz2LGApCtY/Frontend-Test?node-id=73%3A303&viewport=-555%2C2051%2C1.1058835983276367&scaling=scale-down "Prototipo")
+## Instalación 💻
+1. Recuerda crear una carpeta
+2. Clona el repositorio 
+```
+git clone https://github.com/marcobertonati/nextjs-ignite-test.git
+```
+3. Instala las dependencias con `npm install`
+4. Ejecuta el script `npm run dev`
 
-[Ver archivo de diseño](https://www.figma.com/file/iAtVRRkGIwqbbz2LGApCtY/Frontend-Test?node-id=0%3A1 "Archivo de diseño")
+## Arquitectura 🦴
+### Components
+Los components son los encargados de renderizar el contenido visual. Reciben props y retornan un elemento.
 
-### Funcionamiento de filtros
-Tener en cuenta los siguientes requerimientos para realizar la funcionalidad de los filtros:
+### Conteiners
+Los conteiners son los encargados de manejar los servicios, información y lógica de la aplicación. Envian props a sus hijos y establecen el estado de los componentes. 
+
+### Pages
+Las páginas son un conjunto de components que renderizan una vista.
+
+### Public 
+Conjunto de recursos públicos utilizados por la página web.
+
+### Services
+Encargado de solicitar información a la API.
+
+### Styles
+Archivo SASS que estila los archivos.
+
+## APIS 🗃️
+
+Ruta para obtener un array de productos.
+```
+http://localhost:3000/api/products/beers
+```
+
+Ruta para obtener un array de tipos de productos que contiene todos los productos de ese tipo.
+```
+http://localhost:3000/api/products/typeBeers
+```
+
+## Funcionamiento de filtro 📌
 * Al hacer clic en el botón de filtrar se despliega un modal con las opciones para filtrar
 * Se pueden seleccionar varias opciones
 * Al seleccionar una se activa el botón de limpiar y se muestra el número de opciones seleccionadas en el botón de filtrar
 * Al hace clic en el botón de filtrar se cierra el modal y se muestran los productos que cumplen con los filtros seleccionados
 * Al hacer clic en el botón de limpiar quita las opciones seleccionados del formulario de filtros y carga el listado con todas las opciones
-* Son tres opciones de filtro: ```Rubia (id=1)```, ```Morena (id=2)``` y ```Roja (id=3)```
 
-### Requisitos técnicos
-* Usar sass para crear los estilos.
-* El Js debe ser escrito en ES6.
-* Para la construcción del listado de los productos usar el archivo ```products.json``` que esta en este repositorio.
+## 🤓 About author
+I'm [Marco Bertonati](https://www.linkedin.com/in/marcobertonati/) from Mendoza (Argentina). Since I was a kid (07/11/1989) I've been interested in technology, comunication & design. I got a bachelor degree in Social Comunication (Universidad Nacional de Cuyo) and currently I'm expanding my knowledge to web development.
 
-### Responsive
-El prototipo dado esta diseñado en mobile, a pesar de no tener la versión desktop debe ser responsive. Ej: en pantallas desktop el grid de productos puede cambiar a 4 columnas.
+___
+[Ver prototipo](https://www.figma.com/proto/iAtVRRkGIwqbbz2LGApCtY/Frontend-Test?node-id=73%3A303&viewport=-555%2C2051%2C1.1058835983276367&scaling=scale-down "Prototipo")
 
-### Recursos
-* En la carpeta ```img``` dentro del folder ```public``` encuentra las imagenes de los productos.
-* En la carpeta ```svg``` dentro del folder ```public``` encuentra las iconos.
+[Ver archivo de diseño](https://www.figma.com/file/iAtVRRkGIwqbbz2LGApCtY/Frontend-Test?node-id=0%3A1 "Archivo de diseño")
 
-### Bonus
-Al realizar uno o todos los puntos siguientes son puntos extras al calificar el resultado de la prueba:
-* Si se recarga la página y se tenian filtros aplicados, estos se deben de conservar.
-* El reporte en lighthouse no debe ser menor a 90 en Performance, Accesibilidad, Best Practices y CEO.
+
+
