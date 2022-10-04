@@ -21,8 +21,8 @@ export default function Header() {
               <div className={styles.iconNavbarSingle}>
                 <Image
                   alt="logo"
-                  width="36px"
-                  height="36px"
+                  width="32px"
+                  height="32px"
                   src="/svg/logo.svg"
                   style={{ filter: "invert(100%)" }}
                 />

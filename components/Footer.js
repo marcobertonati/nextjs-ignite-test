@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <>
       <div className={styles.container}>
-        <footer className={styles.footerContainer} style={{ color: "red" }}>
+        <footer className={styles.footerContainer}>
           <nav>
             <ul>
               <li>SOBRE NOSOTROS</li>
